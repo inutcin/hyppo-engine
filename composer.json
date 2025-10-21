@@ -1,0 +1,17 @@
+{
+    "name": "inutcin/hyppo-engine",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Inutcin\\HyppoEngine\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Andrey Inyutcin",
+            "email": "inutcin@yandex.ru"
+        }
+    ],
+    "require": {}
+}
