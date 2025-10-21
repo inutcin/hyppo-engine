@@ -3,15 +3,15 @@
          bootstrap="vendor/autoload.php"
          backupGlobals="false"
          colors="true"
-         processIsolation="true"
-         stopOnDefect="false"
+         processIsolation="false"
+         stopOnDefect="true"
          failOnDeprecation="false"
          xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
          cacheDirectory=".phpunit.cache"
 >
     <testsuites>
         <testsuite name="Project Test Suite">
-            <directory suffix=".php">./tests/Unit</directory>
+            <directory suffix=".Test.php">./tests/Unit</directory>
         </testsuite>
     </testsuites>
     <php>

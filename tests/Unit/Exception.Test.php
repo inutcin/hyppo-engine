@@ -9,10 +9,10 @@ class Exception extends TestCase
 {
     /**
      */
-    public function test_construct()
+    public function test_create()
     {
-        $obj = new HyppoEngine\Exception;
-        $this->assertEquals($obj::class, "Inutcin\HyppoEngine\Exception");
+        $obj = HyppoEngine\Exception::create("RenderNotExists");
+        $this->assertTrue($obj instanceof HyppoEngine\Exception);
     }
 
 }
