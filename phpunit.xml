@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="vendor/autoload.php"
+         backupGlobals="false"
+         colors="true"
+         processIsolation="true"
+         stopOnDefect="false"
+         failOnDeprecation="false"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+         cacheDirectory=".phpunit.cache"
+>
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory suffix=".php">./tests/Unit</directory>
+        </testsuite>
+    </testsuites>
+    <php>
+        <env name="APP_KEY" value="base64:bXc5W61UIMGzZWqyOCMBAWSdeExscJrXxAuiZT/EKhk="/>
+    </php>
+    <logging>
+        <testdoxText outputFile="./tests/report.log"/>
+    </logging>
+    <source/>
+</phpunit>

@@ -1,6 +1,7 @@
 <?php
-namespace HyppoEngine;
+namespace Inutcin\HyppoEngine;
 
-class Exception extends \Throwable
+class Exception extends \Exception
 {
+
 }
