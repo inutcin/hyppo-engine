@@ -11,7 +11,9 @@ class Document extends TestCase
      */
     public function test_create()
     {
-        $obj = HyppoEngine\Document::create("Article");
+        $repository = HyppoEngine\Repository::create("File");
+        $repository->path(realpath(dirname(__DIR__."/../Data/README.md")));
+        $obj = HyppoEngine\Document::create("Article", $repository);
         $this->assertTrue($obj instanceof HyppoEngine\Document);
     }
 
