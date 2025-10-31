@@ -12,6 +12,7 @@ class RepositoryNode extends AbstractDTO
     protected ?int $mode = null;
     protected ?int $atime = null;
     protected ?int $size = null;
+    protected ?string $content = null;
 }
 
 
