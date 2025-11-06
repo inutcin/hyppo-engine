@@ -7,10 +7,10 @@ use Inutcin\HyppoEngine as HyppoEngine;
 
 class Document extends TestCase
 {
-    protected static string $documentType = "Article";
+    const PATH = __DIR__."/../Data";
+    const ITEM = "/README.md";
 
-    protected static string $path = __DIR__."/../Data";
-    protected static string $item = "/README.md";
+    protected static string $documentType = "Article";
 
     public function test_create()
     {
@@ -26,7 +26,7 @@ class Document extends TestCase
     {
         // Создаём репозиторий
         $repository = HyppoEngine\Repository::create()
-            ->path(realpath(static::$path))
+            ->path(realpath(static::PATH))
         ;
         // Создаём парсер для загрузки
         $parser = HyppoEngine\Parser::create();
@@ -34,7 +34,7 @@ class Document extends TestCase
         // Создаём объект документа
         $document = HyppoEngine\Document::create(static::$documentType, $repository);
         // Загружаем в документ содержимое из репозитория
-        $object = $document->parser($parser)->load(static::$item);
+        $object = $document->parser($parser)->load(static::ITEM);
         // Проверяем, что объект является экземпляром класса
         $this->assertContainsOnlyInstancesOf(HyppoEngine\Document::class, [$object]);
     }
@@ -46,11 +46,11 @@ class Document extends TestCase
         $dto = 
             HyppoEngine\Document::create(
                 static::$documentType,
-                HyppoEngine\Repository::create()->path(realpath(static::$path))
+                HyppoEngine\Repository::create()->path(realpath(static::PATH))
             )->parser(
                 HyppoEngine\Parser::create()
             )->load(
-                static::$item
+                static::ITEM
             )->getDTO(
 
             )

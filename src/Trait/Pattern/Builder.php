@@ -11,6 +11,9 @@ namespace Inutcin\HyppoEngine\Trait\Pattern;
  */
 trait Builder 
 {
+
+    protected array $buildParts = [];
+
     /**
      * Добавляет компонент в строитель.
      *

@@ -26,6 +26,12 @@ class Parser extends TestCase
     public function test_parse()
     {
         $obj = HyppoEngine\Parser::create("Markdown");
+        $repository = HyppoEngine\Repository::create();
+        $repository->path(Document::PATH);
+        
+        $repositoryNode = $repository->getByPrimaryKey("/README.md");
+        // Убеждаемся что получили объект нужного класса
+        $this->assertContainsOnlyInstancesOf(HyppoEngine\DTO\RepositoryNode::class, [$repositoryNode]);
        
     }
 

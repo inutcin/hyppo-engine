@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Inutcin\HyppoEngine\Trait\Pattern;
 
 use Inutcin\HyppoEngine\Trait\Attribute;
+use Inutcin\HyppoEngine\Exception;
 
 /**
  * Трейт для реализации функциональности репозитория.
@@ -58,7 +59,7 @@ trait Repository
      * @param ?string $value Новое значение протокола
      * @return string|static Значение протокола или текущий объект для цепочки вызовов
      */
-    public function protocol(?string $value = null): string|static
+    public function protocol(?string $value = null): string|static|null
     {
         return (string)$this->attributeAccess("protocol", $value);
     } 
@@ -69,7 +70,7 @@ trait Repository
      * @param ?string $value Новое значение имени пользователя
      * @return string|static Значение имени пользователя или текущий объект для цепочки вызовов
      */
-    public function username(?string $value = null): string|static
+    public function username(?string $value = null): string|static|null
     {
         return $this->attributeAccess("username", $value);
     } 
@@ -80,7 +81,7 @@ trait Repository
      * @param ?string $value Новое значение пароля
      * @return string|static Значение пароля или текущий объект для цепочки вызовов
      */
-    public function password(?string $value = null): string|static
+    public function password(?string $value = null): string|static|null
     {
         return $this->attributeAccess("password", $value);
     } 
@@ -91,7 +92,7 @@ trait Repository
      * @param ?string $value Новое значение хоста
      * @return string|static Значение хоста или текущий объект для цепочки вызовов
      */
-    public function host(?string $value = null): string|static
+    public function host(?string $value = null): string|static|null
     {
         return $this->attributeAccess("host", $value);
     } 
@@ -102,9 +103,15 @@ trait Repository
      * @param ?string $value Новое значение пути
      * @return string|static Значение пути или текущий объект для цепочки вызовов
      */
-    public function path(?string $value = null): string|static
+    public function path(?string $value = null): string|static|null
     {
-        return $this->attributeAccess("path", $value);
+        try {
+            return $this->attributeAccess("path", $value);
+        }
+        catch (\Exception $e) {
+            throw Exception::create("RepositoryError");
+        }
+        return $this;
     } 
 }
 
