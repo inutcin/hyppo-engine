@@ -29,11 +29,12 @@ class File extends TestCase
             $repositoryNode = $repository->getByPrimaryKey("/Readme.md");
         }
         catch (\Throwable $e) {
-            $this->assertContainsOnlyInstancesOf(HyppoEngine\Exception\RepositoryError::class, [$e]);
-            $this->fail($e->getCode(), 6);
+            $this->assertContainsOnlyInstancesOf(HyppoEngine\Exception\FileNotFound::class, [$e]);
+            $this->assertEquals($e->getCode(), 7);
         }
 
-        $this->assertEquals($repositoryNode->get("content"), "Тестовые данные");
+        $repositoryNode = $repository->getByPrimaryKey("/README.md");
+        $this->assertEquals($repositoryNode->get("content"), "Тестовые данные\n===============\n");
 
     }
 

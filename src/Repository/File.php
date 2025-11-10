@@ -31,6 +31,9 @@ class File extends AbstractRepository
     private function getFilename(string $primaryKey):string
     {
         $filename =  $this->path().$primaryKey;
+        if(!file_exists($filename)) {
+            throw Exception::create("FileNotFound");
+        }
         // Если имя файла выходит за пределы пути репозитория
         // (после попыски заменить path на пустоту остался прежним)
         $path = $this->path();
