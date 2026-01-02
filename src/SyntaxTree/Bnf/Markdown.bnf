@@ -1,18 +1,30 @@
-<root>::=<Header><Body>
-<root>::=<Body>
+<Spaces>::=/\s+/
+<Break>::=/{{break}}/
+<Letter>:=/./
+<HeaderDelimiter>::=/^=+\n$/
 
-<Line>::=/.*\n/
+<Letters>:=<Letter>
+<Letters>:=<Letter><Letters>
+<Letters>:=//
 
-<Header>::=<Line><HeaderDelimiter>
+<Breaks>:=<Break>
+<Breaks>::=<Break><Breaks>
 
-<HeaderDelimiter>::=/=+\n/
+<Lines>::=<Letters><Break><Lines>
+<Letters>::=<Letters><MarkUp><Letters>
 
-<Body>::={<Section>}
-<Body>::={<Line>}
+<root>::=<Header><Lines>
+<root>::=<Lines>
 
-<Section>::=<Section1>
-<Section>::=<Section2>
-<Section>::=<Section3>
-<Section>::=<Section4>
-<Section>::=<Section5>
-<Section>::=<Section6>
+<Header>::=<Letters><Break><HeaderDelimiter><Break>
+
+<MarkUp>::=<Section>
+
+<Section>::=<Break><SectionCaption><Breaks><SectionBody>
+<SectionBody>:=<Letters>
+
+<SectionCaption>::=<SectionMarker><Spaces><Letters>
+
+<SectionMarker>:=/\#+/
+
+<SectionBody>::=<Letters>

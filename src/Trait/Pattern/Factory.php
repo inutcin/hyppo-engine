@@ -43,7 +43,7 @@ trait Factory
         } catch (\Throwable $e) {
             $parts = explode("\\", static::class);
             $exceptionClassName = Exception::class . "\\" . end($parts) . "NotExists";
-            throw new $exceptionClassName();
+            throw new $exceptionClassName($classFullName." not exists");
         }
     }
 }

@@ -34,11 +34,11 @@ abstract class Parser
     public function parse(DTO\RepositoryNode $repositoryNode): DTO\Document
     {
         // Создаём синтаксическое дерево разбора, с помощью которого будет построен документ
-        $this->syntaxTree = SyntaxTree::create("bnf")
+        $this->syntaxTree = SyntaxTree::create("Bnf")
+            // Задаём язык документа
+            ->setLang(static::class)
             // Соззаём синтаксическое дерево разбора
             ->parse(
-                // Задаём тип парсера по языку документа
-                static::class,
                 // Передаём текст для разбора 
                 $repositoryNode->get("content")
             );
