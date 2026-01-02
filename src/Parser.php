@@ -12,6 +12,7 @@ namespace Inutcin\HyppoEngine;
  */
 abstract class Parser 
 {
+    // Этот класс реализует паттерн Factory
     use Trait\Pattern\Factory;
 
     /**
@@ -20,17 +21,27 @@ abstract class Parser
      * @var string
      */
     protected static string $createDefaultClassName = "Markdown";
+    protected DTO\SyntaxTree $syntaxTree;
 
     /**
      * Преобразует узел репозитория в DTO документа.
      *
      * Метод должен быть реализован в дочерних классах.
      *
-     * @param DTO\RepositoryNode $content Содержимое узла репозитория
-     * @return DTO\Document Объект данных документа
+     * @param DTO\RepositoryNode $repositoryNode Узел репозитория, который нужно распарсить
+     * @return DTO\Document - синтаксическое дерево разбора документа
      */
-    public function parse(DTO\RepositoryNode $content): DTO\Document
+    public function parse(DTO\RepositoryNode $repositoryNode): DTO\Document
     {
+        // Создаём синтаксическое дерево разбора, с помощью которого будет построен документ
+        $this->syntaxTree = SyntaxTree::create("bnf")
+            // Соззаём синтаксическое дерево разбора
+            ->parse(
+                // Задаём тип парсера по языку документа
+                static::class,
+                // Передаём текст для разбора 
+                $repositoryNode->get("content")
+            );
         return new DTO\Document;
     }
 }
