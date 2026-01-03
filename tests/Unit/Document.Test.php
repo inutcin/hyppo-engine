@@ -35,7 +35,7 @@ class Document extends TestCase
         $document = HyppoEngine\Document::create(static::$documentType, $repository);
         // Загружаем в документ содержимое из репозитория
         $object = $document
-            ->parser($parser)
+            ->setParser($parser)
             ->load(static::ITEM);
         // Проверяем, что объект является экземпляром класса
         $this->assertContainsOnlyInstancesOf(HyppoEngine\Document::class, [$object]);
@@ -49,7 +49,7 @@ class Document extends TestCase
             HyppoEngine\Document::create(
                 static::$documentType,
                 HyppoEngine\Repository::create()->path(realpath(static::PATH))
-            )->parser(
+            )->setParser(
                 HyppoEngine\Parser::create()
             )->load(
                 static::ITEM

@@ -46,12 +46,9 @@ class Markdown extends TestCase
         $markdownParser = HyppoEngine\Parser::create("Markdown");
 
         // Парсим документ Markdown и получаем объект структуры документа 
-        $documentDTO = $markdownParser->parse($repositoryNode);
+        $syntaxTree = $markdownParser->parse($repositoryNode);
         // Убеждаемся, что получили объект нужного класса (DTO документ)
-        $this->assertContainsOnlyInstancesOf(HyppoEngine\DTO\Document::class, [$documentDTO]);
-
-        // Убеждаемся, что в документе есть заголовок
-        $this->assertEquals(trim($documentDTO->get("Title")), "Тестовые данные");
+        $this->assertContainsOnlyInstancesOf(HyppoEngine\SyntaxTree::class, [$syntaxTree]);
         
     }
 

@@ -11,10 +11,10 @@ abstract class Document
     use Trait\Pattern\Factory {
         create as abstractCreate;
     }
-    use Trait\Pattern\Builder;
 
     protected Repository $repository;
-    protected DTO\Document $document;
+    protected DTO\Document $documentDTO;
+    protected Parser $parser;
 
     /**
      * Создание документа
@@ -46,9 +46,10 @@ abstract class Document
      * @param Parser $parser Объект парсера
      * @return static
      */
-    public function parser(Parser $parser): static
+    public function setParser(Parser $parser): static
     {
-        return $this->build("parser", $parser);
+        $this->parser = $parser;
+        return $this;
     }
 
     /**
@@ -59,9 +60,10 @@ abstract class Document
      */
     public function load(string $primaryKey): static
     {
-        $this->document = $this->extract("parser")->parse(
+        $syntaxTree = $this->parser->parse(
             $this->repository->getByPrimaryKey($primaryKey)
         );
+        $this->documentDTO = new DTO\Document;
         return $this;
     }
 
@@ -75,7 +77,7 @@ abstract class Document
      */
     public function getDTO(): DTO\Document
     {
-        return $this->document;
+        return $this->documentDTO;
     }
 }
 

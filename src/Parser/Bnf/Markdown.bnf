@@ -1,0 +1,40 @@
+// Описание грамматики Markdown
+
+// Базовые лексемы
+// Символы
+<Letters>:=/.*/
+// пробелы
+<Spaces>::=/\s+/
+// Перенос строки
+<Break>::=/{{break}}/
+// Разделитель заголовка документв
+<HeaderDelimiter>::=/^=+\n$/
+
+// Переносы строк
+<Breaks>:=<Break>
+// Множественные переносы строк
+<Breaks>::=<Break><Breaks>
+
+<Line>:=<Break><Letters>
+// Строки есть Последовательность символов и ещё строки
+<Lines>::=<Lines><Break><Lines>
+// Каждая строка - строки с разметкой среди них
+<Letters>::=<Letters><MarkUp><Letters>
+
+<root>::=<Header><Lines>
+<root>::=<Lines>
+
+<Header>::=<Letters><Break><HeaderDelimiter><Break>
+
+// Виды разметки
+
+<MarkUp>::=<Section>
+
+<Section>::=<Break><SectionCaption><Breaks><SectionBody>
+<SectionBody>:=<Letters>
+
+<SectionCaption>::=<SectionMarker><Spaces><Letters>
+
+<SectionMarker>:=/\#+/
+
+<SectionBody>::=<Letters>
