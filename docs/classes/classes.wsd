@@ -2,43 +2,53 @@
 
 class DTO {
 }
-package HyppoEngine\DTO {
-    package HyppoEngine\Document {
-        class Article {
+package DTO\ {
+    package DTO\Document\ {
+        class DTO\Document\Author {
         }
     }
+    class DTO\Document {
+    }
+    class DTO\RepositoryNode {
+    }
+    class DTO\SyntaTree {
+    }
 }
+DTO <|.. DTO\Document\Author 
+DTO <|.. DTO\Document
+DTO <|.. DTO\RepositoryNode
+
 
 class Document {
 }
 package HyppoEngine\Document {
-    class Article {
+    class HyppoEngine\Document\Article {
     }
 }
 
 class Exception {
 }
 package HyppoEngine\Exception {
-    class AccessDenied {
+    class HyppoEngine\Exception\AccessDenied {
     }
-    class FileNotFound {
+    class HyppoEngine\Exception\FileNotFound {
     }
-    class ParserNotExists {
+    class HyppoEngine\Exception\ParserNotExists {
     }
-    class RenderNotExists {
+    class HyppoEngine\Exception\RenderNotExists {
     }
-    class RepositoryError {
+    class HyppoEngine\Exception\RepositoryError {
     }
-    class RepositoryNotExists {
+    class HyppoEngine\Exception\RepositoryNotExists {
     }
-    class SyntaxTreeNotExists {
+    class HyppoEngine\Exception\SyntaxTreeNotExists {
     }
 }
 
 class Parser {
 }
 package HyppoEngine\Parser {
-    class Markdown {
+    class HyppoEngine\Parser\Markdown {
     }
 }
 
@@ -46,7 +56,7 @@ package HyppoEngine\Parser {
 class Render {
 }
 package HyppoEngine\Render {
-    class Html {
+    class HyppoEngine\Render\Html {
     }
 }
 
@@ -55,22 +65,23 @@ package HyppoEngine\Render {
 class Repository {
 }
 package HyppoEngine\Repository {
-    class file {
+    class HyppoEngine\Repository\File {
     }
 }
+
 package HyppoEngine\Trait {
     package HyppoEngine\Pattern {
-        class Builder {
+        class HyppoEngine\Pattern\Builder {
             
         }
-        class Factory {
+        class HyppoEngine\Pattern\Factory {
         }
-        class DTO {
+        class HyppoEngine\Pattern\DTO {
         }
-        class Repository {
+        class HyppoEngine\Pattern\Repository {
         }
     }
-    class Attribute {
+    class HyppoEngine\Attribute {
     }
 }
 
