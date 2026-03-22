@@ -1,0 +1,82 @@
+@startuml "hyppo-engine-classes"
+
+class DTO {
+}
+package HyppoEngine\DTO {
+    package HyppoEngine\Document {
+        class Article {
+        }
+    }
+}
+
+class Document {
+}
+package HyppoEngine\Document {
+    class Article {
+    }
+}
+
+class Exception {
+}
+package HyppoEngine\Exception {
+    class AccessDenied {
+    }
+    class FileNotFound {
+    }
+    class ParserNotExists {
+    }
+    class RenderNotExists {
+    }
+    class RepositoryError {
+    }
+    class RepositoryNotExists {
+    }
+    class SyntaxTreeNotExists {
+    }
+}
+
+class Parser {
+}
+package HyppoEngine\Parser {
+    class Markdown {
+    }
+}
+
+
+class Render {
+}
+package HyppoEngine\Render {
+    class Html {
+    }
+}
+
+
+
+class Repository {
+}
+package HyppoEngine\Repository {
+    class file {
+    }
+}
+package HyppoEngine\Trait {
+    package HyppoEngine\Pattern {
+        class Builder {
+            
+        }
+        class Factory {
+        }
+        class DTO {
+        }
+        class Repository {
+        }
+    }
+    class Attribute {
+    }
+}
+
+
+
+class SyntaxTree {
+}
+
+@enduml
