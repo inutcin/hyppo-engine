@@ -1,8 +1,12 @@
-class Parser {
+class HyppoEngine\Parser as "Parser" {
 }
-package HyppoEngine\Parser {
-    class HyppoEngine\Parser\Markdown {
+HyppoEngine\Parser .up.> HyppoEngine\Exception
+
+package HyppoEngine\Parser\ {
+    class HyppoEngine\Parser\Bnf as "Bnf" {
     }
+    HyppoEngine\Parser\Bnf -up-|> HyppoEngine\Parser
+
 }
 
 

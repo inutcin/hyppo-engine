@@ -1,20 +1,85 @@
-class Exception {
+class HyppoEngine\Exception as "Exception" {
 }
-package HyppoEngine\Exception {
-    class HyppoEngine\Exception\AccessDenied {
+
+package HyppoEngine\Exception\ {
+    class HyppoEngine\Exception\Common as "Common" {
     }
-    class HyppoEngine\Exception\FileNotFound {
+    HyppoEngine\Exception\Common --|> HyppoEngine\Exception
+
+    package HyppoEngine\Exception\Common\ {
+        class HyppoEngine\Exception\Common\AccessDenied as "AccessDenied" {
+        }
+        HyppoEngine\Exception\Common\AccessDenied --|> HyppoEngine\Exception\Common
+
+        class HyppoEngine\Exception\Common\FileNotExists as "FileNotExists" {
+        }
+        HyppoEngine\Exception\Common\FileNotExists --|> HyppoEngine\Exception\Common
+
     }
-    class HyppoEngine\Exception\ParserNotExists {
+
+    class HyppoEngine\Exception\Parser as "Parser" {
     }
-    class HyppoEngine\Exception\RenderNotExists {
+    HyppoEngine\Exception\Parser --|> HyppoEngine\Exception
+
+    package HyppoEngine\Exception\Parser\ {
+        class HyppoEngine\Exception\Parser\ParserNotExists as "ParserNotExists" {
+        }
+        HyppoEngine\Exception\Parser\ParserNotExists --|> HyppoEngine\Exception\Parser
+
+        class HyppoEngine\Exception\Parser\Bnf as "Bnf" {
+        }
+        HyppoEngine\Exception\Parser\Bnf --|> HyppoEngine\Exception\Parser
+
+        package HyppoEngine\Exception\Parser\Bnf\ {
+            class HyppoEngine\Exception\Parser\Bnf\BnfNotExists as "BnfNotExists" {
+            }
+            HyppoEngine\Exception\Parser\Bnf\BnfNotExists --|> HyppoEngine\Exception\Parser\Bnf
+        }
     }
-    class HyppoEngine\Exception\RepositoryError {
+
+    
+    class HyppoEngine\Exception\Render as "Render" {
     }
-    class HyppoEngine\Exception\RepositoryNotExists {
+    HyppoEngine\Exception\Render --|> HyppoEngine\Exception
+
+    package HyppoEngine\Exception\Render\ {
+        class HyppoEngine\Exception\Render\RenderNotExists as "RenderNotExists" {
+        }
+        HyppoEngine\Exception\Render\RenderNotExists --|> HyppoEngine\Exception\Render
+
     }
-    class HyppoEngine\Exception\SyntaxTreeNotExists {
+
+
+    class HyppoEngine\Exception\Repository as "Repository" {
     }
+    HyppoEngine\Exception\Repository --|> HyppoEngine\Exception
+
+    package HyppoEngine\Exception\Repositopy\ {
+        class HyppoEngine\Exception\Repository\RepositoryNotExists as "RepositoryNotExists" {
+        }
+        HyppoEngine\Exception\Repository\RepositoryNotExists --|> HyppoEngine\Exception\Repository
+
+        class HyppoEngine\Exception\Repository\File as "File" {
+        }
+        HyppoEngine\Exception\Repository\File --|> HyppoEngine\Exception\Repository
+        
+        package HyppoEngine\Exception\Repositopy\File\ {
+            class HyppoEngine\Exception\Repository\File\FileNotExists as "FileNotExists" {
+            }
+            HyppoEngine\Exception\Repository\File\FileNotExists --|> HyppoEngine\Exception\Repository\File
+        }
+    }
+
+    class HyppoEngine\Exception\SyntaxTree as "SyntaxTree" {
+    }
+    HyppoEngine\Exception\SyntaxTree --|> HyppoEngine\Exception
+
+    package HyppoEngine\Exception\SyntaxTree\ {
+        class HyppoEngine\Exception\SyntaxTree\SyntaxTreeNotExists as "SyntaxTreeNotExists" {
+        }
+        HyppoEngine\Exception\SyntaxTree\SyntaxTreeNotExists --|> HyppoEngine\Exception\SyntaxTree
+    }
+
 }
 
 

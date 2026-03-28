@@ -109,7 +109,7 @@ trait Repository
             return $this->attributeAccess("path", $value);
         }
         catch (\Exception $e) {
-            throw Exception::create("RepositoryError");
+            throw Exception::create("Repository");
         }
         return $this;
     } 

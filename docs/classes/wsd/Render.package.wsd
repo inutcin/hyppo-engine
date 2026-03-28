@@ -1,8 +1,13 @@
-class Render {
+class HyppoEngine\Render as "Render\nuses Factory" {
 }
-package HyppoEngine\Render {
-    class HyppoEngine\Render\Html {
+
+HyppoEngine\Render .up.> HyppoEngine\Exception
+
+
+package HyppoEngine\Render\ {
+    class HyppoEngine\Render\Html as "Html" {
     }
+    HyppoEngine\Render\Html -up-|> HyppoEngine\Render
 }
 
 

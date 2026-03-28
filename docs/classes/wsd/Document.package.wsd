@@ -1,8 +1,16 @@
-class Document {
+class HyppoEngine\Document as "Document"{
 }
-package HyppoEngine\Document {
-    class HyppoEngine\Document\Article {
+HyppoEngine\Document .up.> HyppoEngine\Exception
+HyppoEngine\Document --o HyppoEngine\Repository
+HyppoEngine\Document --o HyppoEngine\Parser
+HyppoEngine\Document --o HyppoEngine\DTO\Document
+
+
+
+package HyppoEngine\Document\ {
+    class HyppoEngine\Document\Article as "Article" {
     }
+    HyppoEngine\Document\Article -right-|> HyppoEngine\Document
 }
 
 

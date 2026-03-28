@@ -27,7 +27,7 @@ trait Factory
      * @return static Экземпляр запрашиваемого класса
      * @throws Exception Если класс с указанным именем не существует
      */
-    public static function create(?string $className = null): static
+    public static function create(?string $className = null, ... $args): static
     {
         // Если имя создаваемого класса не указано - берём умолчальное для
         // этой фабрики
@@ -39,7 +39,7 @@ trait Factory
 
         // Пробуем создать объект нужного класса
         try {
-            return new ($classFullName);
+            return new $classFullName($args);
         } catch (\Throwable $e) {
             $parts = explode("\\", static::class);
             $exceptionClassName = Exception::class . "\\" . end($parts) . "NotExists";

@@ -1,8 +1,14 @@
-class Repository {
+class HyppoEngine\Repository as "Repository" {
 }
-package HyppoEngine\Repository {
-    class HyppoEngine\Repository\File {
+HyppoEngine\Repository .up.> HyppoEngine\Exception
+
+package HyppoEngine\Repository\ {
+    class HyppoEngine\Repository\File as "File" {
     }
+    HyppoEngine\Repository\File -up-|> HyppoEngine\Repository
+    HyppoEngine\Repository\File .down.> HyppoEngine\DTO
+    HyppoEngine\Repository\File .up.> HyppoEngine\Exception
+    
 }
 
 

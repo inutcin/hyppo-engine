@@ -3,9 +3,8 @@ namespace Inutcin\HyppoEngine\Exception;
 
 use Inutcin\HyppoEngine\Exception as AbstractException;
 
-class RenderNotExists extends AbstractException
+class Common extends AbstractException
 {
-    protected $code = 2;
+    protected $code = 10000;
 }
-
 

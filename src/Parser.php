@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Inutcin\HyppoEngine;
 
-use Inutcin\HyppoEngine\Exception\FileNotFound;
+use Inutcin\HyppoEngine\Exception;
 
 /**
  * Абстрактный класс парсера.
@@ -35,15 +35,21 @@ abstract class Parser
      * @param DTO\RepositoryNode $repositoryNode Узел репозитория, который нужно распарсить
      * @return DTO\Document - синтаксическое дерево разбора документа
      */
-    public function parse(DTO\RepositoryNode $repositoryNode, ?string $language = null ): SyntaxTree
+    public function parse(
+        DTO\RepositoryNode $repositoryNode, 
+        Parser $parser = null 
+        string|null $language = null
+    ): SyntaxTree
     {
         // Устанавливаем язык документа
         $language = $language ?? static::class;
         $path = explode("\\", $language);
         $language = array_pop($path);
-        $langBnfFilename = __DIR__ . "/Parser/Bnf/".$language. ".bnf";
+        // Устанавливаем имя парсера 
+        $parserName = 'Bnf'; // FIXME dinamic name of parser
+        $langBnfFilename = __DIR__ . "/Parser/$parserName/".$language. ".bnf";
         if(!file_exists($langBnfFilename)) {
-            throw new FileNotFound("$langBnfFilename not fount");
+            throw new Exception::create("Parser\$parserName\BnfNotExists", "$langBnfFilename not exists"));
         }
         $this->loadRules($langBnfFilename);
         // Получаем контент из репозитория
@@ -52,44 +58,6 @@ abstract class Parser
         return new SyntaxTree;
     }    
 
-    protected function addRule(string $type, string $key, array $variants): static
-    {
-        if(!isset($this->rules[$type][$key])) {
-            $this->rules[$type][$key] = [];
-        }
-        $this->rules[$type][$key][] = $variants;
-        return $this;
-    }
-
-    protected function loadRules(string $rulesFilename): static 
-    {
-        $fd = fopen($rulesFilename, "r");
-        while(!feof($fd)) {
-            $line = (string)fgets($fd);
-            $line = trim($line);
-            // Если строка - правило и содержит только нетерминалы
-            if(preg_match("#^<([\w\d]+)>\s*::=\s*(<[\w\d><]+>)$#i", $line, $matches)) {
-                $key = $matches[1];
-                $nonTerminals = $matches[2];
-                if(!preg_match_all("#<([\w\d]+)>#", $nonTerminals, $matches)) {
-                    continue;
-                } 
-                $this->addRule("nonterms", $key, $matches[1]);
-            }
-            // Если строка - правило и содержит только терминалы
-            elseif(preg_match("#^<([\w\d]+)>\s*::=\s*/(.*)/$#", $line, $matches)) {
-                $key = $matches[1];
-                $terminal = $matches[2];
-                $this->addRule("terms", $key, [$terminal]);
-             }
-            // Если строка не является правилом - пропускаем
-            else {
-                continue;
-            }
-        }
-        fclose($fd);
-        return $this;
-    }
-
-
+    abstract public function addRule(string $type, string $key, array $variants): static;
+    abstract public function loadRules(string $rulesFilename): static ;
 }

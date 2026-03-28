@@ -3,8 +3,9 @@ namespace Inutcin\HyppoEngine\Exception;
 
 use Inutcin\HyppoEngine\Exception as AbstractException;
 
-class AccessDenied extends AbstractException
+class RenderNotExists extends AbstractException
 {
-    protected $code = 3;
+    protected $code = 31000;
 }
+
 

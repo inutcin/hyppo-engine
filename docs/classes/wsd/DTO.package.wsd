@@ -1,20 +1,26 @@
-class DTO {
+class HyppoEngine\DTO as "DTO\nuses DTO,Factory"{
 }
+
 package HyppoEngine\DTO\ {
-    package DTO\Document\ {
-        class DTO\Document\Author {
+    class HyppoEngine\DTO\Document as "Document"{
+    }
+
+    package HyppoEngine\DTO\Document\ {
+        class HyppoEngine\DTO\Document\Author as "Author" {
         }
+        HyppoEngine\DTO\Document\Author -up-|> HyppoEngine\DTO
     }
-    class DTO\Document {
+    HyppoEngine\DTO\Document -down-o HyppoEngine\DTO\Document\Author
+
+    HyppoEngine\DTO\Document -up-|> HyppoEngine\DTO
+
+    class HyppoEngine\DTO\RepositoryNode as "RepositoryNode" {
     }
-    class DTO\RepositoryNode {
-    }
-    class DTO\SyntaTree {
+    HyppoEngine\DTO\RepositoryNode -up-|> HyppoEngine\DTO
+
+    class HyppoEngine\DTO\SyntaTree as "SyntaxTree" {
     }
 }
 
-DTO <|.. DTO\Document\Author 
-DTO <|.. DTO\Document
-DTO <|.. DTO\RepositoryNode
 
 

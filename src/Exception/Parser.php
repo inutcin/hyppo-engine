@@ -3,9 +3,8 @@ namespace Inutcin\HyppoEngine\Exception;
 
 use Inutcin\HyppoEngine\Exception as AbstractException;
 
-class FileNotFound extends AbstractException
+class Parser extends AbstractException
 {
-    protected $code = 7;
+    protected $code = 20000;
 }
-
 

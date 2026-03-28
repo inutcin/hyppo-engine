@@ -12,7 +12,7 @@ class File extends AbstractRepository
 
     public function getByPrimaryKey(?string $primaryKey): DTO
     {
-        $dto = new DTO\RepositoryNode;
+        $dto = new DTO::create("RepositoryNode");
         $content = file_get_contents($this->getFilename($primaryKey));
         $stat = stat($this->getFilename($primaryKey));
         $dto
@@ -32,7 +32,7 @@ class File extends AbstractRepository
     {
         $filename =  $this->path().$primaryKey;
         if(!file_exists($filename)) {
-            throw Exception::create("FileNotFound");
+            throw Exception::create("Repository/File/FileNotExists");
         }
         // Если имя файла выходит за пределы пути репозитория
         // (после попыски заменить path на пустоту остался прежним)
