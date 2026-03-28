@@ -1,0 +1,12 @@
+@startuml "hyppo-engine-classes"
+
+!include DTO.package.wsd
+!include Document.package.wsd
+!include Exception.package.wsd
+!include Parser.package.wsd
+!include Render.package.wsd
+!include Repository.package.wsd
+!include Trait.package.wsd
+!include SyntaxTree.package.wsd
+
+@enduml

@@ -1,0 +1,18 @@
+package HyppoEngine\Trait {
+    package HyppoEngine\Pattern {
+        class HyppoEngine\Pattern\Builder {
+            
+        }
+        class HyppoEngine\Pattern\Factory {
+        }
+        class HyppoEngine\Pattern\DTO {
+        }
+        class HyppoEngine\Pattern\Repository {
+        }
+    }
+    class HyppoEngine\Attribute {
+    }
+}
+
+
+

@@ -1,0 +1,20 @@
+class DTO {
+}
+package HyppoEngine\DTO\ {
+    package DTO\Document\ {
+        class DTO\Document\Author {
+        }
+    }
+    class DTO\Document {
+    }
+    class DTO\RepositoryNode {
+    }
+    class DTO\SyntaTree {
+    }
+}
+
+DTO <|.. DTO\Document\Author 
+DTO <|.. DTO\Document
+DTO <|.. DTO\RepositoryNode
+
+

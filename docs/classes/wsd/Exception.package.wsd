@@ -1,0 +1,21 @@
+class Exception {
+}
+package HyppoEngine\Exception {
+    class HyppoEngine\Exception\AccessDenied {
+    }
+    class HyppoEngine\Exception\FileNotFound {
+    }
+    class HyppoEngine\Exception\ParserNotExists {
+    }
+    class HyppoEngine\Exception\RenderNotExists {
+    }
+    class HyppoEngine\Exception\RepositoryError {
+    }
+    class HyppoEngine\Exception\RepositoryNotExists {
+    }
+    class HyppoEngine\Exception\SyntaxTreeNotExists {
+    }
+}
+
+
+

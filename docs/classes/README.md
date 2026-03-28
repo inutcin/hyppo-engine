@@ -1,6 +1,6 @@
 class diagramm
 ======================
 
-![Hyppo-engine classes](./hyppo-engine-classes.svg)
+![Hyppo-engine classes](./wsd/hyppo-engine-classes.svg)
 
 
